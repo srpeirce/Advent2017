@@ -1,7 +1,10 @@
 # Advent2017
 Solutions for adventofcode.com/2017
+> My solutions aren't always the most effective, or perhaps change the scope...but this is just a fun little problem and a chance to have some fun in the code playground.
 
 ## --- Day 1: Inverse Captcha ---
+> Steve notes: My initial thoughts were to use a loop or LINQ, but then I thought "hey, let's give recursion a go for a change". It was fairly elegant and made part 2 quite easy.
+
 The night before Christmas, one of Santa's Elves calls you in a panic. "The printer's broken! We can't print the Naughty or Nice List!" By the time you make it to sub-basement 17, there are only a few minutes until midnight. "We have a big problem," she says; "there must be almost fifty bugs in this system, but nothing else can print The List. Stand in this square, quick! There's no time to explain; if you can convince them to pay you in stars, you'll be able to--" She pulls a lever and the world goes blurry.
 When your eyes can focus again, everything seems a lot more pixelated than before. She must have sent you inside the computer! You check the system clock: 25 milliseconds until midnight. With that much time, you should be able to collect all fifty stars by December 25th.
 Collect stars by solving puzzles. Two puzzles will be made available on each day millisecond in the advent calendar; the second puzzle is unlocked when you complete the first. Each puzzle grants one star. Good luck!
@@ -29,6 +32,8 @@ What is the solution to your new captcha?
 Your puzzle answer was 1188.
 
 ## --- Day 2: Corruption Checksum ---
+> I solved part 1 using the built in functions in Excel. For part 2 I wrote a simple function in VBA. :o
+
 As you walk through the door, a glowing humanoid shape yells in your direction. "You there! Your state appears to be idle. Come help us repair the corruption in this spreadsheet - if we take another millisecond, we'll have to display an hourglass cursor!"
 The spreadsheet consists of rows of apparently-random numbers. To make sure the recovery process is on the right track, they need you to calculate the spreadsheet's checksum. For each row, determine the difference between the largest value and the smallest value; the checksum is the sum of all of these differences.
 For example, given the following spreadsheet:
@@ -58,6 +63,8 @@ What is the sum of each row's result in your puzzle input?
 Your puzzle answer was 351.
 
 ## --- Day 3: Spiral Memory ---
+> This was a tricky puzzle - one that I had to sit with pen and paper to solve. I'm sure there are more elgant solutions and could of done with bouncing some ideas around with somebody. In the end I created the spiral memory with a coordinate system. This worked okay for part2, although it is currently very slow running. If this was a real project we would seriously need to review the approach!!!
+
 You come across an experimental new kind of memory stored on an infinite two-dimensional grid.
 Each square on the grid is allocated in a spiral pattern starting at a location marked 1 and then counting up while spiraling outward. For example, the first few squares are allocated like this:
 17  16  15  14  13
@@ -73,6 +80,7 @@ Data from square 23 is carried only 2 steps: up twice.
 Data from square 1024 must be carried 31 steps.
 How many steps are required to carry the data from the square identified in your puzzle input all the way to the access port?
 Your puzzle answer was 480.
+
 ### --- Part Two ---
 As a stress test on the system, the programs here clear the grid and then store the value 1 in square 1. Then, in the same allocation order as shown above, they store the sum of the values in all adjacent squares, including diagonals.
 So, the first few squares' values are chosen as follows:
@@ -89,3 +97,27 @@ Once a square is written, its value does not change. Therefore, the first few sq
 362  747  806--->   ...
 What is the first value written that is larger than your puzzle input?
 Your puzzle answer was 349975.
+
+## --- Day 4: High-Entropy Passphrases ---
+> This was light relief from yesterday's puzzle. I decided to encapsulate the logic in a value object using a `TryParse` method (very much in-keeping with C#)
+A new system policy has been put in place that requires all accounts to use a passphrase instead of simply a password. A passphrase consists of a series of words (lowercase letters) separated by spaces.
+
+To ensure security, a valid passphrase must contain no duplicate words.
+For example:
+aa bb cc dd ee is valid.
+aa bb cc dd aa is not valid - the word aa appears more than once.
+aa bb cc dd aaa is valid - aa and aaa count as different words.
+The system's full passphrase list is available as your puzzle input. How many passphrases are valid?
+Your puzzle answer was 386.
+
+### --- Part Two ---
+For added security, yet another system policy has been put in place. Now, a valid passphrase must contain no two words that are anagrams of each other - that is, a passphrase is invalid if any word's letters can be rearranged to form any other word in the passphrase.
+For example:
+abcde fghij is a valid passphrase.
+abcde xyz ecdab is not valid - the letters from the third word can be rearranged to form the first word.
+a ab abc abd abf abj is a valid passphrase, because all letters need to be used when forming another word.
+iiii oiii ooii oooi oooo is valid.
+oiii ioii iioi iiio is not valid - any of these words can be rearranged to form any other word.
+Under this new system policy, how many passphrases are valid?
+Your puzzle answer was 208.
+Both parts of this puzzle are complete! They provide two gold stars: **
